@@ -47,5 +47,5 @@ app.post('/imageurl',   (req, res) => { image.handleApiCall(req, res) });
 
 // Required for the server to listen for incoming requests
 app.listen(process.env.PORT || 3000, () => {
-    console.log("SMART-BRAIN app is running on port ${process.env.PORT");
+    console.log(`SMART-BRAIN app is running on port ${process.env.PORT}`);
 })
