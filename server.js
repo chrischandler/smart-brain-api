@@ -31,6 +31,7 @@ app.use(express.json());
 // / endpoint
 app.get('/', (req, res) => {
     console.log('GET /');
+    console.log(process.env.DATABASE_URL);
     res.send(database.users);
 })
 
