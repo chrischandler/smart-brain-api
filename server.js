@@ -29,10 +29,7 @@ app.use(cors());
 app.use(express.json());
 
 // / endpoint
-app.get('/', (req, res) => {
-    console.log('GET /', database.users);
-    res.send(database.users);
-})
+app.get('/', (req, res) => { res.send('it is working!') });
 
 // other endpoints found in ./controllers directory
 app.post('/signin',     signin.handleSignIn(db, bcrypt));
