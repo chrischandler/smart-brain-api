@@ -4,7 +4,7 @@ const handleRegister = (req, res, db, bcrypt) => {
     const hash = bcrypt.hashSync(password);
     
     // Share what's happening on the console
-    console.log('POST /register', name, email, password, hash);
+    console.log('POST /register', req.body);
 
     // Validate form submission.  Don't trust the front end.
     if (!name || !email || !password) {
