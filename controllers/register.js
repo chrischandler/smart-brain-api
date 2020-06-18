@@ -23,8 +23,8 @@ const handleRegister = (req, res, db, bcrypt) => {
             .returning('*')
             .insert({
                 email: loginEmail[0],
-                name: name
-                // joined: new Date()
+                name: name,
+                joined: new Date()
             })
             .then(user => {
                 res.json(user[0]);
