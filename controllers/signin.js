@@ -13,10 +13,8 @@ const handleSignIn = (db, bcrypt) => (req, res) => {
     db.select('email', 'hash').from('login')
         .where("email",'=', email)
         .then(data => {
-            // const isValid = bcrypt.compareSync(password, data[0].hash);
-            const isValid = true;
+            const isValid = bcrypt.compareSync(password, data[0].hash);
             if (isValid) {
-                console.log('login is valid');
                 return db.select('*').from('users')
                 .where("email", "=", email)
                 .then(user => {
@@ -24,10 +22,10 @@ const handleSignIn = (db, bcrypt) => (req, res) => {
                 })
                 .catch(err => res.status(400).json('unable to get user'));
             } else {
-                res.status(400).json('wrong credentials');
+                res.status(400).json('wrong credentials - failed password comparison');
             }
         })
-        .catch(err => res.status(400).json('wrong credentials'));
+        .catch(err => res.status(400).json('wrong credentials - general'));
 }
 
 module.exports = {handleSignIn};
