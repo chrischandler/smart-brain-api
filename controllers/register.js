@@ -4,7 +4,7 @@ const handleRegister = (req, res, db, bcrypt) => {
     const hash = bcrypt.hashSync(password);
     
     // Share what's happening on the console
-    console.log('POST /register', name, email, password);
+    console.log('POST /register', name, email, password, hash);
 
     // Validate form submission.  Don't trust the front end.
     if (!name || !email || !password) {
@@ -33,9 +33,7 @@ const handleRegister = (req, res, db, bcrypt) => {
         .then(trx.commit)
         .catch(trx.rollback)
     })
-    .catch(err => res.status(400).json('unable to register', hash, email, name, joined));
+    .catch(err => res.status(400).json('unable to register', hash, email, name));
 }
 
-module.exports = {
-    handleRegister: handleRegister
-};
+module.exports = { handleRegister };
