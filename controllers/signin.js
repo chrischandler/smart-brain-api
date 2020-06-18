@@ -3,7 +3,7 @@ const handleSignIn = (db, bcrypt) => (req, res) => {
     const { email, password } = req.body;
 
     // Share what's happening on the console
-    console.log('POST /signin', req.body.email);
+    console.log('POST /signin', req.body);
     
     // Validate form submission.  Don't trust the front end.
     if (!email || !password) {
